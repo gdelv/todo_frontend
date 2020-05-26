@@ -30,10 +30,10 @@ export default class NavBar extends Component {
                         <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                            <NavLink className="button is-primary" exact to='/signup'>
+                            <NavLink className="button is-primary" exact to='/join'>
                                 <strong>Sign up</strong>
                             </NavLink>
-                            <NavLink className="button is-light" exact to='/signin'>
+                            <NavLink className="button is-light" exact to='/login'>
                                 Log in
                             </NavLink>
                             </div>

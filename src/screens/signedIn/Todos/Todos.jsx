@@ -1,29 +1,44 @@
 import React from 'react'
 import Layout from '../../../components/Layout'
+import Nav from '../../../components/Nav'
+import Calendar from 'react-calendar'
 
 export default function Todos(props) {
-    const { history, match, user, todos } = props
-    const renderButton = id => {
-        if(user) {
-            return (
-                <button onClick={() => history.push(`${match.url}/${id}`)}>
-                    See More
-                </button>
-            )
-        } else {
-            return null
-        }
+    const { user, todos } = props
+    // const renderButton = id => {
+    //     if(user) {
+    //         return (
+    //             <button onClick={() => history.push(`${match.url}/${id}`)}>
+    //                 See More
+    //             </button>
+    //         )
+    //     } else {
+    //         return null
+    //     }
+    // }
+
+    const changeColor = value => {
+        return (value ? 'success' : 'danger')
     }
+
+
 
     const renderTodos = () => {
         if(todos) {
             return todos.map(todo => {
+                console.log(changeColor(todo.completed));
+                
                 return (
-                    <div className="todo" key={todo.id}>
-                        <h2 className="title">{todo.title}</h2>
-                        <p className="subtitle">{todo.completed ? 'Todo is completed!' : 'Not complete' }</p>
-                        {renderButton(todo.id)}
-                    </div>
+                    <>
+                        <div className="todo is-flex flex-col" key={todo.id}>
+                            <form className={`has-background-${changeColor(todo.completed)} to-do`}>
+                                <input className='todo-input center' type="checkbox" name="title" checked={todo.completed} />
+                        <label className='is-size-4 todo-title' for="title">{todo.title}<br></br>{<p className="subtitle">{todo.completed ? 'Completed!' : 'Not complete' }</p>}
+                        </label>
+                                <input className='todo-input center' type="submit" value="Edit Task" disabled={todo.completed}/>
+                            </form>
+                        </div>
+                    </>
                 )
             })
         } else {
@@ -31,28 +46,37 @@ export default function Todos(props) {
         }
     }
     if(user) {
+        let dateArr = [new Date('06-06-2020'), new Date('06-05-2020')]
         return (
             <Layout>
-                <h2 className="title">All Todos</h2>
-                {!todos ? <h3>No Todos Currently</h3> : null}
-                <div className="todo-container">{renderTodos()}</div>
+                <Nav/>
+                <div className="todo-container columns">
+                    <div className="container column">
+                        <h2 className="has-text-white is-size-2 calendar-title">To Do Calendar</h2>
+                        <Calendar
+                        value={dateArr}
+                        defaultActiveStartDate={new Date()}
+                        className='center'
+                        />
+                    </div>
+                    
+                    {!todos ? <h3 className='is-family-secondary is-size-4'>No Todos Currently</h3> : null}
+                    <div className="todo-container columm">
+                        <h1 className='is-size-2 list-title'>To Do List</h1>
+                        {renderTodos()}
+                    </div>
+                </div>
+                
             </Layout>
         )
     } else {
         return (
             <Layout>
-                <h1 className="title">Welcome to To Do Manager</h1>
+                <h1 className="title has-text-white is-size-3">Welcome!</h1>
                 <div>
-                    {!todos ? <h3>No Todos currently. Sign in or create an account to begin</h3> : null }
+                    {!todos ? <h3 className='is-family-secondary is-size-4'>No Todos currently. Sign in or create an account to begin</h3> : null }
                     <div className="todo-container">{renderTodos()}</div>
                 </div>
-                {/* <NavLink to='sign-up'>
-                    <Button title='Create Account' className='create-button' />
-                </NavLink>
-
-                <NavLink to='sign-in' className='sign-in'>
-                    SIGN IN
-                </NavLink> */}
             </Layout>
         )
     }

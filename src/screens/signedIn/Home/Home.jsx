@@ -6,7 +6,7 @@ import Nav from '../../../components/Nav'
 const Home = () => (
     <Layout>
         <Nav/>
-        <h4 className='subtitle has-text-centered'>Welcome to To Do Manager App!</h4>
+        {/* <h4 className='subtitle has-text-centered'>Welcome!</h4> */}
     </Layout>
 )
 

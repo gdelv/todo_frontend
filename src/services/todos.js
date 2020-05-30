@@ -20,6 +20,7 @@ export const getTodoById = async id => {
 
 export const createTodo = async todo => {
     try {
+        console.log(todo)
         const resp = await api.post('/todos', todo)
         return resp
     } catch(error) {

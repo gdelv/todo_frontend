@@ -5,7 +5,7 @@ const JwtToken = localStorage.getItem('token') || null
 let apiUrl
 
 const apiUrls = {
-    production: '', // heroku link (ex. https://app-name.herokuapp.com/api)
+    production: 'https://todo-app-giusseppe.herokuapp.com/api',
     development: 'http://localhost:3000/api'
 }
 if(window.location.hostname === 'localhost') {

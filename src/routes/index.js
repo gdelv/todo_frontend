@@ -5,6 +5,9 @@ import Login from '../screens/signedOut/Login/Login'
 import Join from '../screens/signedOut/Join/Join'
 import Landing from '../screens/signedOut/Landing/Landing'
 import SignOut from '../screens/signedOut/SignOut/SignOut'
+import AuthenticatedRoute from './AuthenticatedRoute'
+import Todos from '../screens/signedIn/Todos/Todos'
+import CreateTodo from '../screens/signedIn/CreateTodo/CreateTodo'
 
 const Routes = ({ user, todos, setUser, clearUser, addTodo }) => {
     return (
@@ -28,6 +31,17 @@ const Routes = ({ user, todos, setUser, clearUser, addTodo }) => {
                     exact
                     path='/sign-out'
                     render={props => <SignOut {...props} clearUser={clearUser} user={user} />}
+                />
+                <AuthenticatedRoute
+                    exact
+                    path='/todos'
+                    user={user}
+                    render={props => <Todos {...props} user={user} todos={todos} />}
+                />
+                <AuthenticatedRoute
+                    user={user}
+                    path='/create'
+                    render={props => <CreateTodo {...props} addTodo={addTodo}/>}
                 />
             </Switch>
     )

@@ -2,12 +2,16 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Nav = () => (
-	<nav className="navbar">
-		<div className="nav-items">
-			<NavLink to='/todos'>All Todos</NavLink>
-			<NavLink to='/create'>Create Todo</NavLink>
+	<div className="routes">
+		<div className="div-items">
+			<button className="button is-success is-rounded is-large">
+				<NavLink to='/todos'>All Todos</NavLink>
+			</button>
+			<button className="button is-success is-rounded is-large">
+				<NavLink to='/create'>Create Todo</NavLink>
+			</button>
 		</div>
-	</nav>
+	</div>
 )
 
 export default Nav

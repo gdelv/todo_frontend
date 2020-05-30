@@ -4,14 +4,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap');
 
 // Set your brand colors
-$coral: #dd6361;
+$coral: #d3467b;
 $cream: #eef0f2;
+$blue: #393dac;
 
 // Update Bulma's global variables
 $family-primary: "Permanent Marker", cursive;
 $family-secondary: "Roboto", sans-serif;
 $primary: $coral;
 $white: $cream;
+$info: $blue;
 
 // Update some of Bulma's component variables
 

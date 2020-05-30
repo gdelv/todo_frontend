@@ -45,7 +45,7 @@ export default class Join extends Component {
         const toggleForm = this.state.isError ? 'danger' : ''
         if(this.state.isError) {
             return (
-                <button type='submit' className={`is-${toggleForm}`}>
+                <button type='submit' className={`is-${toggleForm} button submit-button`}>
                     {this.state.errorMsg}
                 </button>
             )
@@ -58,9 +58,9 @@ export default class Join extends Component {
         const { username, email, password } = this.state
         return (
             <div className='form-container'>
-                <h1 className="has-text-centered">sign up</h1>
-                <form onSubmit={this.onSignUp}>
-                    <label>Username</label>
+                <h1 className="signInTitle is-size-1">SIGN UP</h1>
+                <form className='join-form is-family-secondary' onSubmit={this.onSignUp}>
+                    <label className='is-size-4'>Username</label>
                     <input
                         required
                         type='text'
@@ -68,27 +68,34 @@ export default class Join extends Component {
                         value={username}
                         placeholder='Enter Username'
                         onChange={this.handleChange}
+                        className="input is-rounded is-large has-text-centered is-family-secondary"
                     />
-                    <label>Email Address</label>
+                    <label className='is-size-4'>Email Address</label>
                     <input
                         required
                         type='text'
                         name='email'
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         value={email}
                         placeholder='Enter E-mail'
                         onChange={this.handleChange}
+                        className="input is-rounded is-large has-text-centered is-family-secondary"
                     />
-                    <label>Password</label>
+                    <label className='is-size-4'>Password</label>
+
                     <input
                         required
                         type='text'
                         name='password'
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         value={password}
                         placeholder='Enter Password'
                         onChange={this.handleChange}
+                        className="input is-rounded is-large has-text-centered is-family-secondary"
                     />
+                    <h6 className="is-size-6 has-text-warning">Password must contain 8 or more characters<br></br>(At least one number, one uppercase and lowercase letter)</h6>
                     <div className="button-container">
-                        <button type="submit">Create Account</button>
+                        <button className='button is-white is-outlined submit-button is-large' type="submit">Create Account</button>
                     </div>
                     {this.renderError()}
                 </form>

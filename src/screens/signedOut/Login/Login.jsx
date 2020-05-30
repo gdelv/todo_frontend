@@ -44,12 +44,12 @@ export default class Login extends Component {
         const toggleForm = this.state.isError ? 'danger': ''
         if(this.state.isError) {
             return (
-                <button type='submit' className={`is-${toggleForm}`}>
+                <button type='submit' className={`is-${toggleForm} button submit-button`}>
                     {this.state.errorMsg}
                 </button>
             )
         } else {
-            return <button type="submit">Sign In</button>
+            return <button className='button is-white is-outlined submit-button is-large' type="submit">Sign In</button>
         }
     }
 
@@ -61,11 +61,10 @@ export default class Login extends Component {
             <div className='container'>
                 <div className='form-container' id='login'>
                     <div className='sign-in'>
-                        <h2 className='signInTitle'>SIGN IN</h2>
+                        <h2 className='signInTitle is-size-1'>SIGN IN</h2>
                     </div>
-
-                    <form className='placeholder-login' onSubmit={this.onSignIn}>
-                        <label>Username</label>
+                    <form className='placeholder-login login-form is-family-secondary' onSubmit={this.onSignIn}>
+                        <label className='is-size-4'>Username</label>
                         <input
                             required
                             type='text'
@@ -73,8 +72,9 @@ export default class Login extends Component {
                             value={username}
                             placeholder='Enter Username'
                             onChange={this.handleChange}
+                            className="input is-rounded is-large has-text-centered is-family-secondary"
                         />
-                        <label>Password</label>
+                        <label className='is-size-4'>Password</label>
                         <input
                             required
                             name='password'
@@ -82,6 +82,7 @@ export default class Login extends Component {
                             type='password'
                             placeholder='Enter Password'
                             onChange={this.handleChange}
+                            className="input is-rounded is-large has-text-centered is-family-secondary"
                         />
                         {this.renderError()}
                     </form>

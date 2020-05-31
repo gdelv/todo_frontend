@@ -10,7 +10,7 @@ class CreateTodo extends Component {
         super(props)
         this.state = {
             todo: {
-                title:"",
+                title:'',
                 date: ''
             },
             createdTodo: null
@@ -20,10 +20,18 @@ class CreateTodo extends Component {
         let stringDate = JSON.stringify(date)
         console.log(stringDate);
         
+        this.setState(prevState => ({
+            todo: {...prevState.todo, date: date}
+        }))
+    }
+
+    handleTitle = event => {
+        console.log(event.target.value);
+        
         this.setState({ 
             todo: {
-                date: date
-            } 
+                [event.target.name]: event.target.value
+            }
         })
     }
 
@@ -37,6 +45,7 @@ class CreateTodo extends Component {
         }))
     }
     handleSubmit = event => {
+        console.log(this.state.todo)
         event.preventDefault()
         this.props.addTodo(this.state.todo)
         createTodo(this.state.todo)
@@ -48,9 +57,9 @@ class CreateTodo extends Component {
             .catch(console.error)
     }
     render() {
-        console.log(typeof(this.state.todo.date));
+        // console.log(typeof(this.state.todo.date));
 
-        const { handleChange, handleSubmit, handleDate } = this
+        const { handleChange, handleSubmit, handleDate, handleTitle } = this
         const { createdTodo, todo } = this.state
         const { history } = this.props
         if(createdTodo) {
@@ -63,6 +72,7 @@ class CreateTodo extends Component {
                     todo={todo}
                     history={history}
                     handleDate={handleDate}
+                    handleTitle={handleTitle}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
                     cancelPath='/todos'

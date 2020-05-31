@@ -74,7 +74,7 @@ input {
     justify-content: space-evenly;
     min-height: 10vh;
     align-items: center;
-    padding-top: 3em;
+    padding-top: 5em;
 }
 
 .todo-form {
@@ -177,6 +177,7 @@ input {
     margin-bottom: 1em;
     padding: 1em;
     border-radius: 5em;
+    min-width: 30vw;
 }
 // .todo-input {
     // padding: .5em;
